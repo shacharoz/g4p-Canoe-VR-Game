@@ -301,7 +301,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4662290775972092, guid: d89b4939ee2e4c847b356b9cd29ae739, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4662290775972092, guid: d89b4939ee2e4c847b356b9cd29ae739, type: 2}
       propertyPath: m_LocalPosition.y
@@ -334,11 +334,6 @@ Prefab:
     - target: {fileID: 1893806679893718, guid: d89b4939ee2e4c847b356b9cd29ae739, type: 2}
       propertyPath: m_Name
       value: PlayerPF
-      objectReference: {fileID: 0}
-    - target: {fileID: 54911533884644022, guid: d89b4939ee2e4c847b356b9cd29ae739,
-        type: 2}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d89b4939ee2e4c847b356b9cd29ae739, type: 2}

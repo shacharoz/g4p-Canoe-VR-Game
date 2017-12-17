@@ -24,6 +24,7 @@ public class SendCollisionEvent : MonoBehaviour {
 		}
 	}
 
+
 	private void Notify(object collidedWith) {
 		foreach (Transform t in TransformsToNotify) {
 			t.SendMessage (functionNameToTrigger, collidedWith);
