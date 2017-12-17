@@ -7,6 +7,9 @@ public class MovementController : MonoBehaviour {
     public float SPEED = 1;
 
 
+	private bool _wallLeft;
+	private bool _wallRight;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -23,12 +26,18 @@ public class MovementController : MonoBehaviour {
 		//keyboard controls left and right
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.Translate(Vector3.left * 1);
+			if (_wallLeft == false)
+				transform.Translate (Vector3.left * 1);
+			else
+				_wallLeft = false;
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.Translate(Vector3.right * 1);
+			if (_wallRight == false)
+				transform.Translate(Vector3.right * 1);
+			else
+				_wallRight = false;
         }
 
 
@@ -36,8 +45,22 @@ public class MovementController : MonoBehaviour {
     }
 
 
+	//see SendCollisionEvent script for more details
 	public void CollidedWithObject (object obj) {
 		Collider col = obj as Collider;
-		//col.
+
+		if (this.transform.position.x > 0 && col.transform.position.x > this.transform.position.x) {
+			Debug.Log ("bump right wall");
+			//this.transform.position = new Vector3 (col.transform.position.x, this.transform.position.y, this.transform.position.z);
+			_wallLeft=true;
+
+		} else {
+
+			if (this.transform.position.x < 0 && col.transform.position.x < this.transform.position.x) {
+				Debug.Log ("bump left wall");
+				//this.transform.position = new Vector3 (col.transform.position.x, this.transform.position.y, this.transform.position.z);
+				_wallRight=true;
+			}
+		}
 	}
 }
