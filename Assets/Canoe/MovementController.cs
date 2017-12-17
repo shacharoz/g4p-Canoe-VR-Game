@@ -14,9 +14,13 @@ public class MovementController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//keep moving forward
         transform.Translate(Vector3.forward * SPEED);
 
 
+
+		//keyboard controls left and right
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * 1);
@@ -27,5 +31,13 @@ public class MovementController : MonoBehaviour {
             transform.Translate(Vector3.right * 1);
         }
 
+
+
     }
+
+
+	public void CollidedWithObject (object obj) {
+		Collider col = obj as Collider;
+		//col.
+	}
 }
