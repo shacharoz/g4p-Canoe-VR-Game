@@ -18,27 +18,35 @@ public class MovementController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		//keep moving forward
-        transform.Translate(Vector3.forward * SPEED);
 
 
+		Vector3 moveto = Vector3.forward;
+		transform.Translate(moveto * Time.deltaTime * SPEED);
 
 		//keyboard controls left and right
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+		if (Input.GetKey(KeyCode.LeftArrow))
         {
-			if (_wallLeft == false)
-				transform.Translate (Vector3.left * 1);
-			else
+			if (_wallLeft == false) {
+				moveto = Vector3.left;
+				transform.Translate (moveto * Time.deltaTime * SPEED);
+
+			} else {
 				_wallLeft = false;
+			}
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-			if (_wallRight == false)
-				transform.Translate(Vector3.right * 1);
-			else
+		if (Input.GetKey (KeyCode.RightArrow)) {
+			if (_wallRight == false) {
+				moveto = Vector3.right;
+				transform.Translate (moveto * Time.deltaTime * SPEED);
+
+			} else {
 				_wallRight = false;
+			}
         }
+
+
+		//keep moving 
 
 
 
