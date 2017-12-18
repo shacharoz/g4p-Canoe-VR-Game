@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -149,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4421591938838968, guid: a89a5c61b05172c4cb2dfd03287c9147, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1821973698424946, guid: a89a5c61b05172c4cb2dfd03287c9147, type: 2}
       propertyPath: m_Name
@@ -195,7 +196,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4421591938838968, guid: a89a5c61b05172c4cb2dfd03287c9147, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1821973698424946, guid: a89a5c61b05172c4cb2dfd03287c9147, type: 2}
       propertyPath: m_Name
@@ -246,7 +247,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52849a4ae5b6a7048813697fd8e47f81, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &790566691
+--- !u!1001 &1044536429
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -283,7 +284,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4421591938838968, guid: a89a5c61b05172c4cb2dfd03287c9147, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1821973698424946, guid: a89a5c61b05172c4cb2dfd03287c9147, type: 2}
       propertyPath: m_Name
@@ -329,7 +330,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4662290775972092, guid: d89b4939ee2e4c847b356b9cd29ae739, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1893806679893718, guid: d89b4939ee2e4c847b356b9cd29ae739, type: 2}
       propertyPath: m_Name
