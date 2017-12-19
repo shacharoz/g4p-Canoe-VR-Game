@@ -13,10 +13,8 @@ public class TaskManager : MonoBehaviour {
 
 	public TaskProperties properties;
 
-	public UnityEvent TaskCueStart;
-	public UnityEvent TaskStimulationStart;
-	public UnityEvent TaskInputStart;
-	public UnityEvent TaskEnd;
+	public UITaskController UIManager;
+
 
 	// Use this for initialization
 	void Start () {
@@ -26,19 +24,20 @@ public class TaskManager : MonoBehaviour {
 		EndInputTrigger = transform.Find ("Task-EndInputTrigger").GetComponent<Collider> ();
 
 
+
+		if (UIManager == null)
+			UIManager = GameObject.Find ("UI-Canvas").GetComponent<UITaskController> ();
+
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void StartTaskCue(object obj){
 		Collider col = obj as Collider;
 
-		TaskCueStart.Invoke ();
+		//TaskCueStart.Invoke ();
+		UIManager.CueStart.Invoke(properties);
 
-		Debug.Log ("start task now.Hello user!");
+		//Debug.Log ("start task now.Hello user!");
 
 	}
 
@@ -46,9 +45,10 @@ public class TaskManager : MonoBehaviour {
 	public void StartStimulation(object obj){
 		Collider col = obj as Collider;
 
-		TaskStimulationStart.Invoke ();
+		//TaskStimulationStart.Invoke ();
+		UIManager.StimulationStart.Invoke(properties);
 
-		Debug.Log ("Boom boom boom!");
+		//Debug.Log ("Boom boom boom!");
 
 	}
 
@@ -56,18 +56,28 @@ public class TaskManager : MonoBehaviour {
 	public void WaitForUserInput(object obj){
 		Collider col = obj as Collider;
 
-		TaskInputStart.Invoke ();
+		//TaskInputStart.Invoke ();
+		UIManager.InputStart.Invoke(properties);
 
-		Debug.Log ("User please repeat the sequence");
+		//Debug.Log ("User please repeat the sequence");
 
 	}
 
 	public void TaskWrapup(object obj){
 		Collider col = obj as Collider;
 
-		TaskEnd.Invoke ();
+		//TaskEnd.Invoke ();
+		UIManager.TaskEnd.Invoke(properties);
 
-		Debug.Log ("it was a nice task user, you did well. or not...");
+		//Debug.Log ("it was a nice task user, you did well. or not...");
 
 	}
+
+
+
+	// Update is called once per frame
+	void Update () {
+
+	}
+
 }

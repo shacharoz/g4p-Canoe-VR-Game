@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SendCollisionEvent.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Task\UITaskController.cs">
     <Files>
-      <File FileName="Assets\Canoe\MovementController.cs" Line="1" Column="1" />
-      <File FileName="Assets\SendCollisionEvent.cs" Line="30" Column="54" />
-      <File FileName="Assets\Task\TaskManager.cs" Line="36" Column="30" />
+      <File FileName="Assets\Task\TaskManager.cs" Line="70" Column="32" />
+      <File FileName="Assets\Task\UITaskController.cs" Line="80" Column="24" />
+      <File FileName="Assets\Task\TaskProperties.cs" Line="8" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

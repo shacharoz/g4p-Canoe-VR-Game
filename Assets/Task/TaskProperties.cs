@@ -9,28 +9,27 @@ public class TaskProperties : MonoBehaviour {
 	//cue
 	public float cueStartTime = 2;
 	public float cueLengthTime = 2;
+	public string cueMessage = "";
 
 	//stimulation
+	public string stimulationMessage = "";
 	public List<Stimulus> Stimuli;
 
+	//
+	public string inputStartMessage = "";
 
+	//
+	public string taskEndMessage = "";
 
 
 
 
 	public enum Mechanism {
-		SequenceMatching,
-		RepeatSequence,
-		CountTimes,
-		IdentifyStronger,
-
+		RepeatSequence,     //repeat the sequence of pulses 
+		CountTimesHealthy,  //count the number of pulses on the healthy body part
+		CountTimesPainful,  //count the number of pulses on the painful body part
+		IdentifyStronger,   //identify which was the storngest of the pulses
 	}
 
-}
 
-[System.Serializable]
-public class Stimulus{
-	public string description;
-	public float timeForStimulus;
-	public float timeGapAfter;
 }
