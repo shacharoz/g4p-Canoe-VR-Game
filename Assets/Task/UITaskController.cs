@@ -17,9 +17,6 @@ public class UITaskController : MonoBehaviour {
 	public UnityEngine.UI.Image painfulStimulatorEmulator;
 	public UnityEngine.UI.Image healthyStimulatorEmulator;
 
-	public Sprite RED_SQUARE;
-	public Sprite GREEN_SQUARE;
-
 
 	internal enum State {
 		TaskStart,
@@ -31,21 +28,23 @@ public class UITaskController : MonoBehaviour {
 	internal State _state;
 
 
+	//stimulus
 	private List<Stimulus> stimuliSequenceData;
 	private float startTime;
 	private int _stimuliCounter;
 	private bool isPulseSent;
 	private bool isPulseEnd;
-
 	private Color col = new Color(1,1,1,0);
+
+
+	//user input save for CountTasks
+	private int _inputCounter=0;
+	private 
+
 
 	// Use this for initialization
 	void Start () {
 		_state = State.TaskStart;
-
-
-		painfulStimulatorEmulator.sprite = RED_SQUARE;
-		healthyStimulatorEmulator.sprite = RED_SQUARE;
 
 		col.a = 0;
 	}
@@ -72,6 +71,10 @@ public class UITaskController : MonoBehaviour {
 		switch (_state) {
 
 		case State.Stimulation:
+			//if stimulation is over dont get into the cycle again
+			if (stimuliSequenceData.Count == _stimuliCounter)  return;
+			
+
 			if (isPulseSent == false) {
 
 				//send stimulus
@@ -111,6 +114,9 @@ public class UITaskController : MonoBehaviour {
 
 		case State.UserInput:
 
+			if (Input.GetKeyDown (KeyCode.Space) == true) {
+
+			}
 			break;
 
 		}

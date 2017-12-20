@@ -6,6 +6,8 @@ public class TaskProperties : MonoBehaviour {
 
 	public Mechanism mechanism;
 
+	public float overallLength;
+
 	//cue
 	public float cueStartTime = 2;
 	public float cueLengthTime = 2;

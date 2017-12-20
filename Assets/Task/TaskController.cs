@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TaskManager : MonoBehaviour {
+public class TaskController : MonoBehaviour {
 
 	private Collider CueTrigger;
 	private Collider StimulateTrigger;
@@ -14,6 +14,16 @@ public class TaskManager : MonoBehaviour {
 	public TaskProperties properties;
 
 	public UITaskController UIManager;
+
+
+	internal enum State {
+		TaskStart,
+		Cue,
+		Stimulation,
+		UserInput,
+		TaskEnd
+	}
+	internal State _state;
 
 
 	// Use this for initialization
