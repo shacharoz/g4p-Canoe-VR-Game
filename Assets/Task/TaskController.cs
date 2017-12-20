@@ -15,6 +15,7 @@ public class TaskController : MonoBehaviour {
 
 	public UITaskController uiOutputController;
 
+	private UserResponseRecorder responseRecorder;
 
 	internal enum State {
 		TaskStart,
@@ -38,11 +39,17 @@ public class TaskController : MonoBehaviour {
 		if (uiOutputController == null)
 			uiOutputController = GameObject.Find ("UI-Canvas").GetComponent<UITaskController> ();
 
+		responseRecorder = new UserResponseRecorder ();
+
+		_state = State.TaskStart;
+
 	}
 	
 
 	public void StartTaskCue(object obj){
 		Collider col = obj as Collider;
+
+		_state = State.Cue;
 
 		//TaskCueStart.Invoke ();
 		uiOutputController.CueStart.Invoke(properties);
@@ -55,6 +62,8 @@ public class TaskController : MonoBehaviour {
 	public void StartStimulation(object obj){
 		Collider col = obj as Collider;
 
+		_state = State.Stimulation;
+
 		//TaskStimulationStart.Invoke ();
 		uiOutputController.StimulationStart.Invoke(properties);
 
@@ -66,6 +75,8 @@ public class TaskController : MonoBehaviour {
 	public void WaitForUserInput(object obj){
 		Collider col = obj as Collider;
 
+		_state = State.UserInput;
+
 		//TaskInputStart.Invoke ();
 		uiOutputController.InputStart.Invoke(properties);
 
@@ -76,6 +87,8 @@ public class TaskController : MonoBehaviour {
 	public void TaskWrapup(object obj){
 		Collider col = obj as Collider;
 
+		_state = State.TaskEnd;
+
 		//TaskEnd.Invoke ();
 		uiOutputController.TaskEnd.Invoke(properties);
 
@@ -84,6 +97,9 @@ public class TaskController : MonoBehaviour {
 	}
 
 
+	private bool isCountingResponseTime;
+	private float startTimeCount;
+	private float endTimeCount; 
 
 	// Update is called once per frame
 	void Update () {
@@ -98,15 +114,24 @@ public class TaskController : MonoBehaviour {
 
 
 		case State.UserInput:
+			
+			if (isCountingResponseTime == false && Input.GetKeyDown (KeyCode.Space) == true) {
+				//Debug.Log ("start count");
+				startTimeCount = Time.time;
+				isCountingResponseTime = true;
+			}
+			if (isCountingResponseTime == true && Input.GetKeyUp (KeyCode.Space) == true) {
+				//Debug.Log ("end count");
+				endTimeCount = Time.time;
+				isCountingResponseTime = false;
 
-			if (Input.GetKeyDown (KeyCode.Space) == true) {
-
+				responseRecorder.AddResponse (startTimeCount, endTimeCount);
 			}
 			break;
 
 
 		case State.TaskEnd:
-
+			//Debug.Log (responseRecorder.GetAllResponses());
 			break;
 		}
 

@@ -3,15 +3,27 @@
 public class UserResponseRecorder {
 
 
-	public List<UserResponse> responses;
+	private List<UserResponse> responses;
 
 
 
 	public UserResponseRecorder() {
+		responses = new List<UserResponse> ();
+	}
 
+	public void AddResponse(float startTime, float endTime) {
+		UserResponse ur = new UserResponse ();
+		ur.startTime = startTime;
+		ur.endTime = endTime;
+
+		responses.Add (ur);
 
 	}
 
+
+	public List<UserResponse> GetAllResponses(){
+		return responses;
+	}
 }
 
 
