@@ -27,6 +27,14 @@ public class TaskController : MonoBehaviour {
 	internal State _state;
 
 
+
+	//saving user input and response
+	private bool isCountingResponseTime;
+	private float startTimeCount;
+	private float endTimeCount; 
+
+
+
 	// Use this for initialization
 	void Start () {
 		CueTrigger = transform.Find ("Task-CueTrigger").GetComponent<Collider> ();
@@ -38,6 +46,7 @@ public class TaskController : MonoBehaviour {
 
 		if (uiOutputController == null)
 			uiOutputController = GameObject.Find ("UI-Canvas").GetComponent<UITaskController> ();
+
 
 		responseRecorder = new UserResponseRecorder ();
 
@@ -69,6 +78,7 @@ public class TaskController : MonoBehaviour {
 
 		//Debug.Log ("Boom boom boom!");
 
+		SendStimuliSequenceToHardware();
 	}
 
 
@@ -80,8 +90,6 @@ public class TaskController : MonoBehaviour {
 		//TaskInputStart.Invoke ();
 		uiOutputController.InputStart.Invoke(properties);
 
-		//Debug.Log ("User please repeat the sequence");
-
 	}
 
 	public void TaskWrapup(object obj){
@@ -89,29 +97,23 @@ public class TaskController : MonoBehaviour {
 
 		_state = State.TaskEnd;
 
+
+		bool isUserCorrect = CalculateIsUserCorrectOnTask ();
+		Debug.Log ("user is correct: " + isUserCorrect);
+
+
+
 		//TaskEnd.Invoke ();
 		uiOutputController.TaskEnd.Invoke(properties);
 
-		//Debug.Log ("it was a nice task user, you did well. or not...");
 
 	}
 
 
-	private bool isCountingResponseTime;
-	private float startTimeCount;
-	private float endTimeCount; 
-
 	// Update is called once per frame
 	void Update () {
 
-
-
 		switch (_state) {
-
-		case State.Stimulation:
-			
-			break;
-
 
 		case State.UserInput:
 			
@@ -129,13 +131,72 @@ public class TaskController : MonoBehaviour {
 			}
 			break;
 
-
-		case State.TaskEnd:
-			//Debug.Log (responseRecorder.GetAllResponses());
-			break;
 		}
-
 
 	}
 
+
+
+
+	private void SendStimuliSequenceToHardware(){
+
+		//convert sequence of stimulus into a byte array and send to hardware controller over bluetooth
+	}
+
+
+	private bool CalculateIsUserCorrectOnTask(){
+		bool result = false;
+
+		List<UserResponse> responses = responseRecorder.GetAllResponses ();
+
+		switch (properties.mechanism) { 
+		case TaskProperties.Mechanism.CountTimesPainful:
+
+			int painCounter = 0;
+			foreach (Stimulus st in properties.Stimuli) {
+				if (st.side == Stimulus.StimulatorSide.Painful)
+					painCounter++;
+			}
+
+			if (responses.Count == painCounter)
+				result = true;
+
+			break;
+
+
+		case TaskProperties.Mechanism.CountTimesHealthy:
+			int healthyCounter = 0;
+			foreach (Stimulus st in properties.Stimuli) {
+				if (st.side == Stimulus.StimulatorSide.Healthy)
+					healthyCounter++;
+			}
+
+			if (responses.Count == healthyCounter)
+				result = true;
+
+			break;
+
+
+		case TaskProperties.Mechanism.CountTimesTotal:
+			if (responses.Count == properties.Stimuli.Count)
+				result = true;
+
+			break;
+
+
+
+
+		case TaskProperties.Mechanism.IdentifyStronger:
+			break;
+
+
+		case TaskProperties.Mechanism.RepeatSequence:
+			break;
+
+		}
+
+
+
+		return result;
+	}
 }

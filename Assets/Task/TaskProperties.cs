@@ -21,8 +21,8 @@ public class TaskProperties : MonoBehaviour {
 	public string inputStartMessage = "";
 
 	//
-	public string taskEndMessage = "";
-
+	public string taskEndCorrectMessage = "";
+	public string taskEndWrongMessage = "";
 
 
 
@@ -30,6 +30,7 @@ public class TaskProperties : MonoBehaviour {
 		RepeatSequence,     //repeat the sequence of pulses 
 		CountTimesHealthy,  //count the number of pulses on the healthy body part
 		CountTimesPainful,  //count the number of pulses on the painful body part
+		CountTimesTotal,    //count the number of all pulses on both painful and healthy body part
 		IdentifyStronger,   //identify which was the storngest of the pulses
 	}
 

@@ -113,10 +113,7 @@ public class UITaskController : MonoBehaviour {
 
 
 		case State.UserInput:
-
-			if (Input.GetKeyDown (KeyCode.Space) == true) {
-
-			}
+			
 			break;
 
 		}
@@ -153,12 +150,10 @@ public class UITaskController : MonoBehaviour {
 	public void OnTaskEnd (TaskProperties properties){
 		_state = State.TaskEnd;
 
-		MessageTopScreen (properties.taskEndMessage);
+		MessageTopScreen (properties.taskEndCorrectMessage);
 	}
 
-	private void ActivateOnePulse(){
 
-	}
 
 	private void MessageTopScreen(string message){
 		messageTextField.text = message;

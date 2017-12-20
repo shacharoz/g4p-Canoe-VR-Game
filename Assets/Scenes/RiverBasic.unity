@@ -273,7 +273,7 @@ MonoBehaviour:
   overallLength: 25
   cueStartTime: 2
   cueLengthTime: 2
-  cueMessage: going to touch
+  cueMessage: going to touch your body parts
   stimulationMessage: count number of touches on painful body part
   Stimuli:
   - description: healthy_2
@@ -301,7 +301,8 @@ MonoBehaviour:
     side: 1
     timeGapAfter: 1
   inputStartMessage: how many were there?
-  taskEndMessage: great!
+  taskEndCorrectMessage: great job
+  taskEndWrongMessage: terrible busterd
 --- !u!4 &500589780
 Transform:
   m_ObjectHideFlags: 0
@@ -639,7 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408877720}
   m_Layer: 0
-  m_Name: TasksParent
+  m_Name: TasksParentTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
