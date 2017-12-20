@@ -35,7 +35,9 @@ public class UITaskController : MonoBehaviour {
 	private float startTime;
 	private int _stimuliCounter;
 	private bool isPulseSent;
+	private bool isPulseEnd;
 
+	private Color col = new Color(1,1,1,0);
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +46,8 @@ public class UITaskController : MonoBehaviour {
 
 		painfulStimulatorEmulator.sprite = RED_SQUARE;
 		healthyStimulatorEmulator.sprite = RED_SQUARE;
+
+		col.a = 0;
 	}
 
 	void OnEnable() {
@@ -71,28 +75,34 @@ public class UITaskController : MonoBehaviour {
 			if (isPulseSent == false) {
 
 				//send stimulus
-				healthyStimulatorEmulator.color.a = 0;
-				painfulStimulatorEmulator.color.a = 0;
+				healthyStimulatorEmulator.color = col;
+				painfulStimulatorEmulator.color = col;
 
 				UnityEngine.UI.Image stimulator = (stimuliSequenceData [_stimuliCounter].side == Stimulus.StimulatorSide.Healthy) ? healthyStimulatorEmulator : painfulStimulatorEmulator;
-				stimulator.color.a = 1;
+				col.a = 1;
+				stimulator.color = col;
 
 				isPulseSent = true;
 			
-			} else {
+			} else if (isPulseEnd == false) {
 				if (Time.time - startTime > stimuliSequenceData [_stimuliCounter].timeForStimulus) {
+
+					//reset the emulation
 					UnityEngine.UI.Image stimulator = (stimuliSequenceData [_stimuliCounter].side == Stimulus.StimulatorSide.Healthy) ? healthyStimulatorEmulator : painfulStimulatorEmulator;
-					stimulator.color.a = 0;
+					col.a = 0;
+					stimulator.color = col;
 					startTime = Time.time;
 
-				} else { 
-					if (Time.time - startTime > stimuliSequenceData [_stimuliCounter].timeGapAfter) {
+					isPulseEnd = true;
+				}
 
-						//move forward the counter
-						_stimuliCounter++;
-						startTime = Time.time;
-						isPulseSent = false;
-					}
+			} else {
+				if (Time.time - startTime > stimuliSequenceData [_stimuliCounter].timeGapAfter) {
+
+					//move the to next stimulus
+					_stimuliCounter++;
+					startTime = Time.time;
+					isPulseSent = false; isPulseEnd = false;
 				}
 			}
 
@@ -117,7 +127,7 @@ public class UITaskController : MonoBehaviour {
 	public void OnStimulationStart (TaskProperties properties){
 		startTime = Time.time;
 
-		isPulseSent = false;
+		isPulseSent = false; isPulseEnd = false;
 		_stimuliCounter = 0;
 		stimuliSequenceData = properties.Stimuli;
 
