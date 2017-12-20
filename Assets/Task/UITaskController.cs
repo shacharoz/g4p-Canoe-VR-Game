@@ -150,7 +150,9 @@ public class UITaskController : MonoBehaviour {
 	public void OnTaskEnd (TaskProperties properties){
 		_state = State.TaskEnd;
 
-		MessageTopScreen (properties.taskEndCorrectMessage);
+		//Debug.Log (properties.taskEndMessage);
+
+		MessageTopScreen (properties.taskEndMessage);
 	}
 
 

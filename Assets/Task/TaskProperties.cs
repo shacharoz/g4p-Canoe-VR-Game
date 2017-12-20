@@ -23,7 +23,7 @@ public class TaskProperties : MonoBehaviour {
 	//
 	public string taskEndCorrectMessage = "";
 	public string taskEndWrongMessage = "";
-
+	internal string taskEndMessage;
 
 
 	public enum Mechanism {

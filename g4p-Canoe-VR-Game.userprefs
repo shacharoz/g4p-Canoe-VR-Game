@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Task\UITaskController.cs">
     <Files>
-      <File FileName="Assets\Task\TaskManager.cs" Line="70" Column="32" />
-      <File FileName="Assets\Task\UITaskController.cs" Line="80" Column="24" />
-      <File FileName="Assets\Task\TaskProperties.cs" Line="8" Column="2" />
+      <File FileName="Assets\Task\TaskController.cs" Line="107" Column="47" />
+      <File FileName="Assets\Task\UITaskController.cs" Line="153" Column="5" />
+      <File FileName="Assets\Task\TaskProperties.cs" Line="26" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

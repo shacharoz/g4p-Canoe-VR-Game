@@ -101,7 +101,7 @@ public class TaskController : MonoBehaviour {
 		bool isUserCorrect = CalculateIsUserCorrectOnTask ();
 		Debug.Log ("user is correct: " + isUserCorrect);
 
-
+		properties.taskEndMessage = (isUserCorrect) ? properties.taskEndCorrectMessage : properties.taskEndWrongMessage;
 
 		//TaskEnd.Invoke ();
 		uiOutputController.TaskEnd.Invoke(properties);
