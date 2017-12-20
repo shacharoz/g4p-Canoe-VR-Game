@@ -39,7 +39,7 @@ public class UITaskController : MonoBehaviour {
 
 	//user input save for CountTasks
 	private int _inputCounter=0;
-	private 
+
 
 
 	// Use this for initialization

@@ -13,7 +13,7 @@ public class TaskController : MonoBehaviour {
 
 	public TaskProperties properties;
 
-	public UITaskController UIManager;
+	public UITaskController uiOutputController;
 
 
 	internal enum State {
@@ -35,8 +35,8 @@ public class TaskController : MonoBehaviour {
 
 
 
-		if (UIManager == null)
-			UIManager = GameObject.Find ("UI-Canvas").GetComponent<UITaskController> ();
+		if (uiOutputController == null)
+			uiOutputController = GameObject.Find ("UI-Canvas").GetComponent<UITaskController> ();
 
 	}
 	
@@ -45,7 +45,7 @@ public class TaskController : MonoBehaviour {
 		Collider col = obj as Collider;
 
 		//TaskCueStart.Invoke ();
-		UIManager.CueStart.Invoke(properties);
+		uiOutputController.CueStart.Invoke(properties);
 
 		//Debug.Log ("start task now.Hello user!");
 
@@ -56,7 +56,7 @@ public class TaskController : MonoBehaviour {
 		Collider col = obj as Collider;
 
 		//TaskStimulationStart.Invoke ();
-		UIManager.StimulationStart.Invoke(properties);
+		uiOutputController.StimulationStart.Invoke(properties);
 
 		//Debug.Log ("Boom boom boom!");
 
@@ -67,7 +67,7 @@ public class TaskController : MonoBehaviour {
 		Collider col = obj as Collider;
 
 		//TaskInputStart.Invoke ();
-		UIManager.InputStart.Invoke(properties);
+		uiOutputController.InputStart.Invoke(properties);
 
 		//Debug.Log ("User please repeat the sequence");
 
@@ -77,7 +77,7 @@ public class TaskController : MonoBehaviour {
 		Collider col = obj as Collider;
 
 		//TaskEnd.Invoke ();
-		UIManager.TaskEnd.Invoke(properties);
+		uiOutputController.TaskEnd.Invoke(properties);
 
 		//Debug.Log ("it was a nice task user, you did well. or not...");
 
@@ -87,6 +87,29 @@ public class TaskController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+
+
+		switch (_state) {
+
+		case State.Stimulation:
+			
+			break;
+
+
+		case State.UserInput:
+
+			if (Input.GetKeyDown (KeyCode.Space) == true) {
+
+			}
+			break;
+
+
+		case State.TaskEnd:
+
+			break;
+		}
+
 
 	}
 

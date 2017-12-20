@@ -35,7 +35,7 @@ public class TasksManager : MonoBehaviour {
 
 		GameObject taskGO = Instantiate (TaskTemplatePrefab, nextTaskPos, Quaternion.identity, ParentTaskTransform);
 		TaskController tc = taskGO.GetComponent<TaskController> ();
-		tc.UIManager = uiTaskController;
+		tc.uiOutputController = uiTaskController;
 		tc.properties = props;
 
 	}
