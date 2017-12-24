@@ -136,7 +136,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 108919303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 199, y: -50, z: 0}
+  m_LocalPosition: {x: 298, y: -50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1844760933}
@@ -180,6 +180,76 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 108919303}
+--- !u!1 &120012014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 120012015}
+  - component: {fileID: 120012016}
+  m_Layer: 0
+  m_Name: Task2Properties (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &120012015
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120012014}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1794395778}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &120012016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120012014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c398713ef07933f478102d42f3946d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mechanism: 1
+  overallLength: 25
+  cueStartTime: 2
+  cueLengthTime: 2
+  cueMessage: pay attention to your healthy body
+  stimulationMessage: count number of touches on healthy body part
+  Stimuli:
+  - description: healthy_1
+    timeForStimulus: 1
+    side: 1
+    timeGapAfter: 1
+  - description: painful_1
+    timeForStimulus: 1
+    side: 0
+    timeGapAfter: 1
+  - description: painful_2
+    timeForStimulus: 2
+    side: 0
+    timeGapAfter: 1
+  - description: painful_2
+    timeForStimulus: 2
+    side: 0
+    timeGapAfter: 1
+  - description: healthy_2
+    timeForStimulus: 2
+    side: 1
+    timeGapAfter: 1
+  inputStartMessage: repeat the pulses on your healthy
+  taskEndCorrectMessage: great job
+  taskEndWrongMessage: wrong
 --- !u!1 &214713857
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +372,7 @@ MonoBehaviour:
     timeGapAfter: 1
   inputStartMessage: how many were there?
   taskEndCorrectMessage: great job
-  taskEndWrongMessage: terrible busterd
+  taskEndWrongMessage: wrong
 --- !u!4 &500589780
 Transform:
   m_ObjectHideFlags: 0
@@ -440,7 +510,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 952129511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -199, y: -50, z: 0}
+  m_LocalPosition: {x: -298, y: -50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1844760933}
@@ -497,7 +567,7 @@ Prefab:
     - target: {fileID: 114585552537091000, guid: d89b4939ee2e4c847b356b9cd29ae739,
         type: 2}
       propertyPath: SPEED
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d89b4939ee2e4c847b356b9cd29ae739, type: 2}
@@ -786,6 +856,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 500589780}
+  - {fileID: 120012015}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
